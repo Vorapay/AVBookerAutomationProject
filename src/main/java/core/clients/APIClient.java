@@ -64,7 +64,7 @@ public class APIClient {
     public Response getBookingById() {
         return getRequestSpec()
                 .when()
-                .get(ApiEndpoints.ID.getPath())
+                .get(ApiEndpoints.BOOKING.getPath() + "/1")
                 .then()
                 .statusCode(200) // Ожидаемый статус-код 200 OK
                 .extract()

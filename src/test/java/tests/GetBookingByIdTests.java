@@ -29,20 +29,22 @@ public class GetBookingByIdTests {
         assertThat(response.getStatusCode()).isEqualTo(200);
 
         String responseBody = response.getBody().asString();
-        List<BookingById> bookingByIds = objectMapper.readValue(responseBody, new TypeReference<List<BookingById>>() {});
+        //List<BookingById> bookingByIds = objectMapper.readValue(responseBody, new TypeReference<List<BookingById>>() {});
+        BookingById bookingById = objectMapper.readValue(responseBody, BookingById.class);
 
-        assertThat(bookingByIds).isNotEmpty();
+        // assertThat(bookingByIds).isNotEmpty();
 
-        for (BookingById bookingById : bookingByIds) {
-            assertThat(bookingById.getFirstname()).isNotNull();
-            assertThat(bookingById.getLastname()).isNotNull();
-            assertThat(bookingById.getTotalprice()).isGreaterThan(0);
-            assertThat(bookingById.getAdditionalneeds()).isNotNull();
-            assertThat(bookingById.isDepositpaid()).isTrue();
-        }
-
-        for (BookingById.Bookingdates bookingdate : bookingdates) {
-            assertThat(BookingById.Bookingdates.)
-        }
+        // for (BookingById bookingById : bookingByIds) {
+        assertThat(bookingById.getFirstname()).isNotNull();
+        assertThat(bookingById.getLastname()).isNotNull();
+        assertThat(bookingById.getTotalprice()).isGreaterThan(0);
+        assertThat(bookingById.getAdditionalneeds()).isNotNull();
+        assertThat(bookingById.isDepositpaid()).isTrue();
+        assertThat(bookingById.getBookingdates()).isNotNull();
+        assertThat(bookingById.getBookingdates().getCheckin()).isNotNull();
+        assertThat(bookingById.getBookingdates().getCheckout()).isNotNull();
+        assertThat(bookingById.getBookingdates().getCheckin()).matches("\\d{4}-\\d{2}-\\d{2}");
+        assertThat(bookingById.getBookingdates().getCheckout()).matches("\\d{4}-\\d{2}-\\d{2}");
+        // }
     }
 }

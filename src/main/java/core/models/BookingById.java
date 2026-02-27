@@ -11,7 +11,7 @@ public class BookingById {
     private Bookingdates bookingdates;
     private String additionalneeds;
 
-    public class Bookingdates{
+    public static class Bookingdates{
         private String checkin;
         private String checkout;
 
@@ -44,12 +44,14 @@ public class BookingById {
                        @JsonProperty("lastname") String lastname,
                        @JsonProperty("totalprice") int totalprice,
                        @JsonProperty("depositpaid") boolean depositpaid,
-                       @JsonProperty("additionalneeds") String additionalneeds) {
+                       @JsonProperty("additionalneeds") String additionalneeds,
+                       @JsonProperty("bookingdates") Bookingdates bookingdates) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
         this.depositpaid = depositpaid;
         this.additionalneeds = additionalneeds;
+        this.bookingdates = bookingdates;
     }
 
     public String getFirstname() {

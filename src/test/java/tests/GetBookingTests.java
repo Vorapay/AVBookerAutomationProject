@@ -46,12 +46,12 @@ public class GetBookingTests {
         assertThat(response.getStatusCode()).isEqualTo(200);
 
         String responseBody = response.getBody().asString();
-        List<Bookingdates> Bookingdates = objectMapper.readValue(responseBody, new TypeReference<List<Bookingdates>>() {
+        List<Booking> bookings = objectMapper.readValue(responseBody, new TypeReference<List<Booking>>() {
         });
 
-        assertThat(bookingdates).isNotEmpty();
+        assertThat(bookings).isNotEmpty();
 
-        for (Bookingdates bookingdates : bookingdates) {
+        for (Booking booking : bookings) {
             assertThat(booking.getBookingid()).isGreaterThan(0);
         }
     }
